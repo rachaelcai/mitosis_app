@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+ <body>
+  <h1>Test Title!</h1>
+  <p>Here is my plot</p>
+  <div id='chart' class='chart'”></div>
+</body>
+<script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.newPlot('chart',graphs,{});
+</script>
+</html>
