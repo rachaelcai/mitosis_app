@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature and Humidity Plots</title>
+    <script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <h1>Temperature and Humidity Plots</h1>
+
+    <button onclick="showTemp()">Temperature</button>
+    <button onclick="showRh()">Humidity</button>
+    <button onclick="showSoc()">Battery</button>
+    <button onclick="downloadCSV()">Download CSV</button>
+
+    <div id="chart"></div>
+
+
+    <script type='text/javascript'>
+
+        function showTemp() {
+            graphs = {{ graphJSON_temp | safe }};
+            Plotly.newPlot('chart',graphs,{});
+        }
+
+        function showRh() {
+            graphs = {{ graphJSON_rh | safe }};
+            Plotly.newPlot('chart',graphs,{});
+        }
+
+        function showSoc() {
+            graphs = {{ graphJSON_soc | safe }};
+            Plotly.newPlot('chart',graphs,{});
+        }
+
+        function downloadCSV() {
+            window.location.href = "/download_csv";  // This will trigger the FastAPI download route
+        }
+
+    </script>
+</body>
+</html>
